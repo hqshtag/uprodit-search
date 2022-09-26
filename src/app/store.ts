@@ -1,10 +1,16 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+// import { uproditApi } from '../features/search/uproditApi';
+import searchReducer from '../features/search/searchSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    search: searchReducer,
+    // counter: counterReducer,
+    // [uproditApi.reducerPath]: uproditApi.reducer
   },
+ /*  middleware: (getDefaultMiddleware) => 
+      getDefaultMiddleware().concat(uproditApi.middleware)
+  , */
 });
 
 export type AppDispatch = typeof store.dispatch;
