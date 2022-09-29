@@ -1,30 +1,31 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { SearchTDO, StateType, UprodiImageResponse, UproditUser } from './types';
-import { getUproditUserImage, searchUproditUsers } from './uproditApi';
+import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit'
+import { SearchQuerySettings, UproditUser } from '../../services/search/types';
+import { UproditImage } from "../../services/image/types"
+import { getImage } from '../../services/image';
+import { search } from '../../services/search';
+import { RootState } from '../../app/store';
 
-
-
-
-const initialState: StateType = {
-    data: []
+type SearchStateType = {
+    users: UproditUser[],
+    images: UproditImage[]
 }
 
-interface ParsedResponse 
-{user: UproditUser, image: UprodiImageResponse}
-
-
+const initialState: SearchStateType = {
+    users: [],
+    images: []
+}
 
 export const searchUsers = createAsyncThunk(
-  'uproditSearch/users',
-  async(searchData: SearchTDO) => {
-    let payload: ParsedResponse[] = [];
-    const users = await searchUproditUsers(searchData);
+  'uprodit/users',
+  async(queryParams: SearchQuerySettings) => {
+    let payload: UproditUser[] = [];
+
+    const users = await search(queryParams);
+    
     if(users && users.length > 0){
-    //  let imagesResults: Promise<UprodiImageResponse>[] =[];
      for (let i = 0; i < users.length; i++) {
       const user = users[i];
-      let userImage = await getUproditUserImage(user.image_id);
-      payload.push({user, image: userImage});
+      payload.push(user);
     };
    
     return payload;
@@ -32,27 +33,52 @@ export const searchUsers = createAsyncThunk(
 }
 )
 
+
+export const searchImage = createAsyncThunk(
+  'uprodit/images',
+  async (id: number) =>{
+
+    let userImage = await getImage(id.toString());
+    return userImage
+  }
+);
+
+
 const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
     clearData: (state) => {
-      state.data = [];
-    }
+      state.images = [];
+      state.users = [];
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(searchUsers.pending, (state) => {
     }).addCase(searchUsers.fulfilled, (state, action)=>{
       let {payload} = action;
-      if(payload) state.data = payload;
-    }).addCase(searchUsers.rejected, (state, action) => {
-      console.log(action)
+      if(payload) state.users = payload;
+    }).addCase(searchImage.fulfilled, (state, action)=>{
+      let  {payload} = action;
+      if(payload) state.images.push(payload);
     })
   }
 });
 
 
-export const dataSelector = (state: StateType) => state.data;
+const selectImages = (state: RootState) => state.search.images;
+const forwardProfileId = (_state: RootState, id: number) => id;
+export const selectImageByProfileId =  createSelector(
+    [
+      selectImages,
+      forwardProfileId
+    ],
+    (images, id) => {
+      return images.find(img => img.profileId === id)
+    }
+  )
+
+
 
 export const {clearData} = searchSlice.actions
 

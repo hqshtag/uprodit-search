@@ -1,0 +1,62 @@
+.user-card img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+.wrapper .paginationItem {
+  display: flex;
+}
+.wrapper .paginationItem button {
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  background: transparent;
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  color: rgb(0, 0, 0);
+}
+.wrapper .paginationItem button:hover {
+  background-color: rgba(159, 159, 159, 0.295);
+  cursor: pointer;
+}
+.wrapper .paginationItem button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.wrapper .paginationItem[aria-current=page] button {
+  background-color: rgba(159, 159, 159, 0.295);
+  font-weight: 700;
+  text-decoration: underline;
+}
+.wrapper .paginationItem .arrowButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper .paginationItem .arrowButton svg {
+  width: 1em;
+  height: 1em;
+}
+.wrapper .dots {
+  line-height: 34px;
+  margin: 5px 10px;
+}
+.wrapper .paginationSelector {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}/*# sourceMappingURL=index.css.map */

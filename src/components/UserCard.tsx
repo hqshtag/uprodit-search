@@ -1,15 +1,32 @@
-import React from 'react'
+import Avatar from "../assets/defaultAvatar.json";
+import { UproditImage } from '../services/image/types'
+import { UproditUser } from '../services/search/types'
+import { selectImageByProfileId } from '../features/search/searchSlice'
+import { useAppSelector } from '../app/hooks'
 
-type UserCardProps = {}
+type UserCardProps = {
+    user: UproditUser
+}
 
-const UserCard = (props: UserCardProps) => {
-  
+const UserCard = ({user}: UserCardProps) => {
 
+    const image = useAppSelector(state => selectImageByProfileId(state, parseInt(user.id)));
+    let profileImageUrl = Avatar.B64DataUrl;
+    if(image && image.mimeType && image.b64Content){
+        profileImageUrl = parseImageToDataUrl(image)
+    }
 
 
   return (
-    <div>UserCard</div>
+    <div className='user-card'>
+        <img src={profileImageUrl} alt="user profile" />
+        <p>Name: {user.denomination}</p>
+    </div>
   )
+}
+
+const parseImageToDataUrl = (image: UproditImage) => {
+  return `data:${image.mimeType};base64,${image.b64Content}`;
 }
 
 export default UserCard
