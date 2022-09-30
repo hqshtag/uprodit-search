@@ -16,11 +16,19 @@ const UserCard = ({user}: UserCardProps) => {
         profileImageUrl = parseImageToDataUrl(image)
     }
 
+    let titleStr = user.specialities.join('/');
+    if(titleStr.length > 26){
+      titleStr = titleStr.split('').slice(0, 26).join('') + '...'
+    }
+
 
   return (
     <div className='user-card'>
         <img src={profileImageUrl} alt="user profile" />
-        <p>Name: {user.denomination}</p>
+        <p className="name">{user.denomination}</p>
+        <p className="title">{titleStr}</p>
+        <span>{`${user.stars_count} ⭐`}</span>
+
     </div>
   )
 }

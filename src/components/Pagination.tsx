@@ -33,17 +33,15 @@ const Pagination = ({
     return (
         <ul
             className="wrapper"
-            aria-label="Blog post pagination list"
         >
             <li className="paginationItem">
                 <button
                     type="button"
                     className="arrowButton left"
-                    aria-label="Goto previous page"
                     onClick={onPrevious}
                     disabled={disabledNavigation || !isPreviousPageAvailable}
                 >
-                    ◄
+                    Previous
                 </button>
             </li>
 
@@ -52,12 +50,10 @@ const Pagination = ({
                 <button
                     type="button"
                     className="arrowButton right"
-                    // Do not remove the aria-label below, it is used for Hatchways automation.
-                    aria-label="Goto next page"
                     onClick={onNext}
                     disabled={disabledNavigation || !isNextPageAvailable} // change this line to disable a button.
                 >
-                    ►
+                    Next
                 </button>
             </li>
 

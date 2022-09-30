@@ -70,7 +70,8 @@ const Search = () => {
 
     return (
         <>
-            <SearchInput handleChange={handleTextChange} value={keyword} placeholder="Search by name" />
+            <div className="search-params">
+            <SearchInput handleChange={handleTextChange} value={keyword} placeholder="Start typing..." />
             {firedOnce && (
                 <Pagination currentPage={page}
                     totalCount={resultCount}
@@ -79,9 +80,10 @@ const Search = () => {
                     disabledNavigation={false} />
 
             )}
-            <div>{loading ? 'Searching...' : 'Search Complete'}</div>
-            {!loading && firedOnce ? (<p>{`Loaded ${resultCount} result`}</p>) : null}
+            <div>{loading ? 'Loading...' :  null }</div>
+            </div>
             <UserList users={users} />
+            {!loading && firedOnce ? (<p>{`Loaded ${resultCount} result`}</p>) : null}
 
         </>
     )

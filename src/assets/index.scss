@@ -1,7 +1,24 @@
-@import "./usercard";
+@import "./users";
 @import "./pagination";
 * {
     margin: 0;
     padding: 0;
   }
 
+
+  .search-params {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  input.keyword-input {
+    padding: 0 16px;
+    font-size: 17px;
+    color: #202020;
+    margin: 12px;
+    height: 36px;
+    width: 70%;
+    border: 1px solid #747474;
+    border-radius: 4px;
+  }
+  }

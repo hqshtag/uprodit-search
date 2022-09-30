@@ -1,0 +1,33 @@
+.user-card {
+    margin: 12px;
+    padding: 8px 8px 10px;
+    width: 180px;
+    
+    p.name {
+        margin-top: 8px;
+        font-size: 18px;
+    }
+
+    p.title {
+        color: rgb(74, 74, 74);
+    }
+
+    img {
+        height: 160px;
+        width: 100%;
+       // border-radius: 50%;
+    }
+
+    span {
+        float: right;
+    }
+
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.user-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}

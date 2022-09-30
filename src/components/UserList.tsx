@@ -8,15 +8,13 @@ type UserListProps = {
 const UserList = ({users}: UserListProps) => {
     let renderedUsers = users ? users.map((u,i)=>{
         return (
-         <li key={'u'+i+u.id}>
-            <UserCard user={u} />
-         </li>   
+            <UserCard user={u} key={'u'+i+u.id} />
         )
     }) : []
   return (
-    <ul>
+    <div className="user-list">
         {renderedUsers}
-    </ul>
+    </div>
   )
 }
 

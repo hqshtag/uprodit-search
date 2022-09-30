@@ -3,16 +3,16 @@
     gap: 0.5rem;
     align-items: center;
     list-style-type: none;
-    margin-bottom: 20px;
+    margin: 20px;
   
     .paginationItem {
       display: flex;
       button {
         border: 1px solid rgb(0, 0, 0, 0.6);
         background: transparent;
-        height: 34px;
-        width: 34px;
-        border-radius: 50%;
+        height: 36px;
+        width: 64px;
+        border-radius: 4px;
         overflow: hidden;
         color: rgb(0, 0, 0);
   
@@ -46,11 +46,7 @@
       }
     }
   
-    .dots {
-      line-height: 34px;
-      margin: 5px 10px;
-    }
-  
+   
     .paginationSelector {
       background-color: transparent;
       border: none;

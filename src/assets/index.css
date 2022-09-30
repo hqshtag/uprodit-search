@@ -1,7 +1,29 @@
+.user-card {
+  margin: 12px;
+  padding: 8px 8px 10px;
+  width: 180px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.user-card p.name {
+  margin-top: 8px;
+  font-size: 18px;
+}
+.user-card p.title {
+  color: rgb(74, 74, 74);
+}
 .user-card img {
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
+  height: 160px;
+  width: 100%;
+}
+.user-card span {
+  float: right;
+}
+
+.user-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .wrapper {
@@ -9,7 +31,7 @@
   gap: 0.5rem;
   align-items: center;
   list-style-type: none;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 .wrapper .paginationItem {
   display: flex;
@@ -17,9 +39,9 @@
 .wrapper .paginationItem button {
   border: 1px solid rgba(0, 0, 0, 0.6);
   background: transparent;
-  height: 34px;
-  width: 34px;
-  border-radius: 50%;
+  height: 36px;
+  width: 64px;
+  border-radius: 4px;
   overflow: hidden;
   color: rgb(0, 0, 0);
 }
@@ -45,10 +67,6 @@
   width: 1em;
   height: 1em;
 }
-.wrapper .dots {
-  line-height: 34px;
-  margin: 5px 10px;
-}
 .wrapper .paginationSelector {
   background-color: transparent;
   border: none;
@@ -59,4 +77,20 @@
 * {
   margin: 0;
   padding: 0;
+}
+
+.search-params {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-params input.keyword-input {
+  padding: 0 16px;
+  font-size: 17px;
+  color: #202020;
+  margin: 12px;
+  height: 36px;
+  width: 70%;
+  border: 1px solid #747474;
+  border-radius: 4px;
 }/*# sourceMappingURL=index.css.map */
