@@ -33,9 +33,7 @@ const Search = () => {
             maxResults,
         }
         if(firedOnce && debouncedKeyword && debouncedKeyword.length >= 3){
-            qs.prenom = debouncedKeyword;
-            qs.nom = debouncedKeyword;
-         //   qs.allSkillsStr = "Mobile Developer"
+            qs.terms = debouncedKeyword
         }
         dispatch(searchUsers(qs)).then(unwrapResult).then(res => {
             setLoading(false);
